@@ -1,0 +1,97 @@
+# include  < sstream >
+# include  < string >
+# include  < iostream >
+# include  < cstring >
+# include  < fstream >
+# include  < time.h >
+# include  < cstdlib >
+
+using  namespace  std ;
+
+klasa  zmiana {
+       ifstream plik1;
+       ofstream plik2;
+       strunowy orginal [ 1000 ];
+       sortowanie ciągów [ 1000 ];
+
+  publiczny:
+        zmiana ();
+        ~ zmiana ();
+       
+        void  wczytaj ();     
+		string stringSort (string s);  
+};
+
+zmiana :: zmiana () {
+    plik1. open ( " c: \\ palindromy.txt " );
+    plik2. open ( " c: \\ wynikJSON.txt " );
+}
+
+void  zmiana :: wczytaj () {
+	
+	napis napis;
+	Int  indeksu ;
+	int i = 0 ;
+	
+	plik2 << " [ " ;
+	
+	jednocześnie (! plik1. EOF ()) {
+        plik1 >> napis;
+        
+        orginal [i] = napis;
+		sort [i] = stringSort ( napis );
+		cout << sortuj [i] << endl ;;
+		i ++;
+	}
+
+}
+
+string zmiana :: stringSort (string s) {
+	
+	int t [ 256 ]; // dane wejsciowe
+	ciąg wynik;
+	
+	// przypisanie kazdej komurce wartosci
+	dla ( int i = 0 ; i <= 256 ; i ++)
+        t [i] = 0 ;
+
+    // zapelnienie tablicy t [i] danych
+    for ( int i = 0 ; i <= s. length () - 1 ; i ++)
+    {
+        t [i] = ( int ) s [i];
+    }
+
+    int los1 = rand ()% s. długość ();
+    int los2 = rand ()% s. długość ();
+    
+    srand ( czas ( NULL ));
+    
+    int pomoc;
+    
+    help = t [los1];
+    t [los1] = t [los2];
+    t [los2] = pomoc;
+   	
+   	for ( int i = 0 ; i <= s. length () - 1 ; i ++)
+    {
+        wynik + = ( char ) t [i];
+    }
+	
+	return wynik;
+	
+}
+
+zmiana :: ~ zmiana () {
+    plik1. close ();
+    plik2. close ();
+}
+
+/ * uruchom ten program za pomocą pauzera konsoli lub dodaj własny getch, system („pauza”) lub pętlę wejściową * /
+
+int  main ( int argc, char ** argv) {
+	
+	zmiana zmiana; 
+    zmiana. wczytaj ();
+	
+	zwraca  0 ;
+}
